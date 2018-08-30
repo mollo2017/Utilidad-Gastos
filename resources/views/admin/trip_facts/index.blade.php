@@ -1,11 +1,12 @@
+<!-- Establece que este archivo es una platilla de extención -->
 @extends('layouts.app')
-
+<!-- Genera el tipo de pagina que se va a cargar segun las plantillas -->
 @section('body_class', 'Product-page')
-
+<!-- Nombre de la ubicacion de la pagina -->
 @section('page', 'Factores')
-
+<!-- Pasa el titulo de la pagina a la plantilla principal -->
 @section('title_head', ' - listado de Factores de viaje')
-
+<!-- Muestra el contenido de esta pagina a la plantilla principal -->
 @section('content')
 												<!-- '{{ asset('img/city.jpg')}}' -->
 		<div class="header header-filter" style="background-image: url('https://images.unsplash.com/photo-1423655156442-ccc11daa4e99?crop=entropy&dpr=2&fit=crop&fm=jpg&h=750&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=1450'); width: 100 %;background-size: cover; background-position: top center;">
@@ -17,7 +18,7 @@
                     </a>
 	                <div class="section text-center">
 						<!--<div class="col-md-12 col-md-offset-0 col-sm-6 col-sm-offset-3", conteiner> -->
-							<h2 class="title">Listado de factores de viaje</h2>
+							<h2 class="title">Listado de factores del viaje por completar</h2>
 							<div class="team">
 								<!--<div class="row">-->
 									<nav class="navbar navbar-info" role="navigation">
@@ -48,48 +49,48 @@
 						                <table class="table table-bordered table-dark">
 										    <thead class="bg-info">
 										        <tr>
-										            <th class="info-title">#</th>
-										            <th class="info-title">Numero de ruta</th>
-										            <th class="info-title">Numero de camión</th>
-										            <th class="info-title">Chofer</th>
-										            <th class="info-title">Cargador 1</th>
-										            <th class="info-title">Cargador 2</th>
-										            <th class="info-title">Bodeguero</th>
-										            <th class="info-title">Kilometraje inicial</th>
-										            <th class="info-title">Kilometraje final</th>
-										            <th class="info-title">Litros Diessel</th>
-										            <th class="info-title">Monto diessel</th>
-										            <th class="info-title">Fecha de facturacion</th>
-										            <th class="info-title">Fecha de llegada</th>
-										            <th class="info-title">Peso de carga</th>
-										            <th class="info-title">Volumen</th>
-										            <th class="info-title">Importe del viaje ($)</th>
-										            <th class="info-title">Hora de salida</th>
-										            <th class="info-title">Hora de llegada</th>
-										            <th class="info-title">opciones</th>
+										            <th class="info-title text-center">#</th>
+										            <th class="info-title text-center">Numero de ruta</th>
+										            <th class="info-title text-center">Numero de camión</th>
+										            <th class="info-title text-center">Chofer</th>
+										            <th class="info-title text-center">Cargador 1</th>
+										            <th class="info-title text-center">Cargador 2</th>
+										            <th class="info-title text-center">Bodeguero</th>
+										            <th class="info-title text-center">Kilometraje inicial</th>
+										            <th class="info-title text-center">Kilometraje final</th>
+										            <th class="info-title text-center">Litros Diessel</th>
+										            <th class="info-title text-center">Monto diessel</th>
+										            <th class="info-title text-center">Fecha de facturacion</th>
+										            <th class="info-title text-center">Fecha de llegada</th>
+										            <th class="info-title text-center">Peso de carga</th>
+										            <th class="info-title text-center">Volumen</th>
+										            <th class="info-title text-center">Importe del viaje ($)</th>
+										            <th class="info-title text-center">Hora de salida</th>
+										            <th class="info-title text-center">Hora de llegada</th>
+										            <th class="info-title text-center">opciones</th>
 										        </tr>
 										    </thead>
 										    <tbody>
 										    	@foreach ($factstrips as $index => $factstrip)
 										        <tr>
 										            <td class="info-title">{{$factstrip->id}}</td>
-										            <td class="info-title" data-currency="MXN">{{$ArrayRoutes[$index]}}</td>
-										            <td class="info-title" data-currency="MXN">{{$ArrayTruks[$index]}}</td>
-										            <td class="info-title" data-currency="MXN">{{$Arraychof[$index]}}</td>
-										            <td class="info-title" data-currency="MXN">{{$Arrayc1[$index]}}</td>
-										            <td class="info-title" data-currency="MXN">{{$Arrayc2[$index]}}</td>
-										            <td class="info-title" data-currency="MXN">{{$ArrayB[$index]}}</td>
-										            <td class="info-title" data-currency="MXN">{{$factstrip->initial_km}}</td>
-										            <td class="info-title" data-currency="MXN">{{$factstrip->final_km}}</td>
-										            <td class="info-title" data-currency="MXN">{{$factstrip->diessel_quantity_initial}}</td>
-										            <td class="info-title" data-currency="MXN">{{$factstrip->diessel_quantity_final}}</td>
-										            <td class="info-title" data-currency="MXN">{{$factstrip->loading_date}}</td>
-										            <td class="info-title" data-currency="MXN">{{$factstrip->arrival_date}}</td>
-										            <td class="info-title" data-currency="MXN">{{$factstrip->weight_conteiner}}</td>
-										            <td class="info-title" data-currency="MXN">{{$factstrip->volume}}</td>
-										            <td class="info-title" data-currency="MXN">{{$factstrip->trip_amount}}</td>
-										            <td class="info-title" data-currency="MXN">{{$factstrip->departure_time}}</td>
-										            <td class="info-title" data-currency="MXN">{{$factstrip->arrival_time}}
+										            <td class="info-title"">{{$ArrayRoutes[$index]}}</td>
+										            <td class="info-title"">{{$ArrayTruks[$index]}}</td>
+										            <td class="info-title"">{{$Arraychof[$index]}}</td>
+										            <td class="info-title"">{{$Arrayc1[$index]}}</td>
+										            <td class="info-title"">{{$Arrayc2[$index]}}</td>
+										            <td class="info-title"">{{$ArrayB[$index]}}</td>
+										            <td class="info-title"">{{$factstrip->initial_km}} Km</td>
+										            <td class="info-title"">{{$factstrip->final_km}} Km</td>
+										            <td class="info-title"">{{$factstrip->diessel_quantity_initial}} lts</td>
+										            <td class="info-title"">&dollar;{{$factstrip->diessel_quantity_final}}</td>
+										            <td class="info-title"">{{$factstrip->loading_date}}</td>
+										            <td class="info-title"">{{$factstrip->arrival_date}}</td>
+										            <td class="info-title"">{{$factstrip->weight_conteiner}} kgs</td>
+										            <td class="info-title"">{{$factstrip->volume}} cm</td>
+										            <td class="info-title"">&dollar;{{$factstrip->trip_amount}}</td>
+										            <td class="info-title"">{{$factstrip->departure_time}}</td>
+										            <td class="info-title"">{{$factstrip->arrival_time}}
 										            </td>
 													
 										            <td class="info-title" class="td-actions text-right">
@@ -102,6 +103,21 @@
 										</table>
 									</div>
 									{{$factstrips->links()}}
+									@if($nums == 0)
+										<div class="alert alert-warning">
+										    <div class="container-fluid">
+											  <div class="alert-icon">
+												<i class="material-icons">info_outline</i>
+											  </div>
+											  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+												<span aria-hidden="true"><i class="material-icons">clear</i></span>
+											  </button>
+											  <b>Notificación:</b> ¡¡¡wow sin datos para mostrar por el momento!!!   
+											  <a class="label label-info" data-toggle="modal" data-target="#myModal">Mas información
+											  </a>
+										    </div>
+										</div>
+									@endif
 								<!--</div>-->
 							</div>
 						<!--</div> -->

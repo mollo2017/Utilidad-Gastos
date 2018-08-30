@@ -6,7 +6,14 @@ use Illuminate\Http\Request;
 use App\Not_Billed_expense;
 use App\Trip_Fact;
 use App\Billed_expense;
-
+/*
+    Por el momento esta clase esta sin usar debido a cambios sugeridos por la empresa y contiene
+    los metodos siguientes:
+    *index - Metodo que devuelve una vista de datos completos con gastos facturados
+    *index - Metodo que devuelve una vista de datos completos con gastos no facturados
+    *show - Metodo que devuelve una vista para hacer busquedas de datos para reportes de impresión
+    *vsearch1 - Metodo que devuelve una vista con los datos de la busqueda realizada
+*/
 class PrintController extends Controller
 {
     //
@@ -123,5 +130,4 @@ class PrintController extends Controller
         //***************************************************************
     	return view('admin.print.vsearch1')->with(compact('billedExpenses'));//listado
     }
-
 }

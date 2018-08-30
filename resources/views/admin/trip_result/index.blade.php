@@ -1,13 +1,13 @@
+<!-- Establece que este archivo es una platilla de extención -->
 @extends('layouts.app')
-
+<!-- Genera el tipo de pagina que se va a cargar segun las plantillas -->
 @section('body_class', 'Product-page')
-
+<!-- Nombre de la ubicacion de la pagina -->
 @section('page', 'Resultados')
-
+<!-- Pasa el titulo de la pagina a la plantilla principal -->
 @section('title_head', ' - Listado de los resultados de viaje')
-
+<!-- Muestra el contenido de esta pagina a la plantilla principal -->
 @section('content')
-												<!-- '{{ asset('img/city.jpg')}}' -->
 		<div class="header header-filter" style="background-image: url('https://images.unsplash.com/photo-1423655156442-ccc11daa4e99?crop=entropy&dpr=2&fit=crop&fm=jpg&h=750&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=1450'); width: 100 %;background-size: cover; background-position: top center;">
 		</div>
 		<div class="main main-raised">
@@ -16,8 +16,16 @@
                         <i class="material-icons">navigate_before</i>
                     </a>
 	                <div class="section text-center">
-						<!--<div class="col-md-12 col-md-offset-0 col-sm-6 col-sm-offset-3", conteiner> -->
 							<h2 class="title">Listado de los resultados de viaje</h2>
+							@if(session('noty'))
+								<div class="alert alert-warning">
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+										<span aria-hidden="true"><i class="material-icons">clear</i></span>
+									</button>
+									{{ session('noty') }}
+									<a class="label label-info" data-toggle="modal" href="{{ url('/home') }}">Completar</a>
+								</div>
+							@endif
 							<div class="team">
 								<!--<div class="row">-->
 									<nav class="navbar navbar-info" role="navigation">
@@ -48,30 +56,30 @@
 						                <table class="table table-bordered table-dark">
 										    <thead class="bg-warning">
 										        <tr>
-										            <th class="info-title">#</th>
-										            <th class="info-title">FechaFacturado</th>
-										            <th class="info-title">No.Ruta</th>
-										            <th class="info-title">Poblacion</th>
-										            <th class="info-title">Total de gastos</th>
-										            <th class="info-title">Total de cajas</th>
-										            <th class="info-title">Total de kilometros</th>
-										            <th class="info-title">Costo por caja</th>
-										            <th class="info-title">Costo por Kilometro</th>
-										            <th class="info-title">Utilidad bruta</th>
-										            <th class="info-title">Utilidad neta</th>
-										            <th class="info-title">Opciones</th>
+										            <th class="info-title text-center">#</th>
+										            <th class="info-title text-center">FechaFacturado</th>
+										            <th class="info-title text-center">No.Ruta</th>
+										            <th class="info-title text-center">Poblacion</th>
+										            <th class="info-title text-center">Total de gastos</th>
+										            <th class="info-title text-center">Total de cajas</th>
+										            <th class="info-title text-center">Total de kilometros</th>
+										            <th class="info-title text-center">Costo por caja</th>
+										            <th class="info-title text-center">Costo por Kilometro</th>
+										            <th class="info-title text-center">Utilidad bruta</th>
+										            <th class="info-title text-center">Utilidad neta</th>
+										            <th class="info-title text-center">Opciones</th>
 										        </tr>
 										    </thead>
 										    <tbody>
 										    	@foreach ($resulttrips as $index => $r)
 										        <tr>
 										            <td class="info-title">{{$r->id}}</td>
-										            <td class="info-title" data-currency="MXN">{{$Arrayfac[$index]}}</td>
-										            <td class="info-title" data-currency="MXN">{{$ArrayRtNbr[$index]}}</td>
-										            <td class="info-title" data-currency="MXN">{{$ArrayPn[$index]}}</td>
+										            <td class="info-title">{{$Arrayfac[$index]}}</td>
+										            <td class="info-title">{{$ArrayRtNbr[$index]}}</td>
+										            <td class="info-title">{{$ArrayPn[$index]}}</td>
 										            <td class="info-title" >&dollar;{{$r->total_expense}}</td>
-										            <td class="info-title" data-currency="MXN">{{$r->total_boxes}}</td>
-										            <td class="info-title" data-currency="MXN">{{$r->total_km}}</td>
+										            <td class="info-title">{{$r->total_boxes}} cajas</td>
+										            <td class="info-title">{{$r->total_km}} Km</td>
 										            <td class="info-title" >&dollar;{{$r->cost_per_box}}</td>
 										            <td class="info-title" >&dollar;{{$r->cost_per_km}}</td>
 										            <td class="info-title" >&dollar;{{$r->gross_profit}}</td>
@@ -86,13 +94,25 @@
 										    </tbody>
 										</table>
 									</div>
+									
 									{{$resulttrips->links()}}
-								<!--</div>-->
+									@if($nums == 0)
+										<div class="alert alert-warning">
+										    <div class="container-fluid">
+											  <div class="alert-icon">
+												<i class="material-icons">info_outline</i>
+											  </div>
+											  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+												<span aria-hidden="true"><i class="material-icons">clear</i></span>
+											  </button>
+											  <b>Notificación:</b> ¡¡¡wow sin datos para mostrar por el momento!!!   
+											  <a class="label label-info" data-toggle="modal" data-target="#myModal">Mas información
+											  </a>
+										    </div>
+										</div>
+									@endif
 							</div>
-						<!--</div> -->
 					</div>
 				</div>
-			<!--<div class="profile-content">
-            </div>-->
         </div>
     @endsection

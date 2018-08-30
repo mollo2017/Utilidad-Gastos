@@ -3079,12 +3079,14 @@ h2.title {
   padding-right: 24px;
   padding-bottom: 0;
   padding-left: 24px;
+  color: #000000;
 }
 .modal-content .modal-body {
   padding-top: 24px;
   padding-right: 24px;
   padding-bottom: 16px;
   padding-left: 24px;
+  color: #000000;
 }
 .modal-content .modal-footer {
   border-top: none;
@@ -3117,11 +3119,11 @@ h2.title {
   margin-top: 100px;
 }
 .modal .modal-header .close {
-  color: #555555;
+  color: #000000;
 }
 .modal .modal-header .close:hover, .modal .modal-header .close:focus {
   opacity: 1;
-  color: #555555;
+  color: #000000;
 }
 
 .panel {

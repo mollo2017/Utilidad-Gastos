@@ -1,12 +1,14 @@
+<!-- Establece que este archivo es una platilla de extención -->
 @extends('layouts.app')
-
+<!-- Genera el tipo de pagina que se va a cargar segun las plantillas -->
 @section('body_class', 'signup-page')
-
+<!-- Nombre de la ubicacion de la pagina -->
 @section('page', 'Tareas')
-
-@section('title_head', ' - Tablero de taras')
-
+<!-- Pasa el titulo de la pagina a la plantilla principal -->
+@section('title_head', ' - Tablero de tareas')
+<!-- Muestra el contenido de esta pagina a la plantilla principal -->
 @section('content')
+<!-- Pagina home o de menú de acciones principales -->
 <div class="header header-filter" style="background-image: url('{{ asset('img/city.jpg') }}'); background-size: cover; background-position: top center;">
     <div class="container">
         <div class="row">
@@ -31,7 +33,7 @@
                         <a href="{{ url('/admin/trip_result') }}" class="btn btn-primary btn-round" data-toggle="tooltip" data-placement="right" title="Revisar los datos e imprimir">
                             <i class="material-icons">print</i> Imprimir reporte
                         </a>
-                        <a href="{{ url('/welcome') }}" class="btn btn-default btn-fab btn-fab-mini btn-round" data-toggle="tooltip" data-placement="bottom" title="Regresar">
+                        <a href="{{ url('/') }}" class="btn btn-default btn-fab btn-fab-mini btn-round" data-toggle="tooltip" data-placement="bottom" title="Regresar">
                             <i class="material-icons">navigate_before</i>
                         </a>
                     </div>
@@ -39,6 +41,7 @@
             </div>
         </div>
     </div>
+    <!-- Aqui se incluye el footer llama desde otro archivo ubicado en: gastos-utilidad\app\resources\views\includes\footer.blade.php-->
     @include('includes.footer') 
 </div> 
  

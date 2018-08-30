@@ -1,17 +1,13 @@
+<!-- Establece que este archivo es una platilla de extención -->
 @extends('layouts.app')
-
+<!-- Genera el tipo de pagina que se va a cargar segun las plantillas -->
 @section('body_class', 'Product-page')
-
+<!-- Nombre de la ubicacion de la pagina -->
 @section('page', 'Resultados')
-
+<!-- Pasa el titulo de la pagina a la plantilla principal -->
 @section('title_head', ' - Listado de los resultados de viaje')
-
-@section('content')<!--
-<div class="header header-filter" style="background-image: url('https://images.unsplash.com/photo-1423655156442-ccc11daa4e99?crop=entropy&dpr=2&fit=crop&fm=jpg&h=750&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=1450'); width: 100 %;background-size: cover; background-position: top center;">
-</div>
-<a href="{{ url('/home') }}" class="btn btn-default btn-fab btn-fab-mini btn-round" data-toggle="tooltip" data-placement="top" title="Regresar al menu">
-            <i class="material-icons">navigate_before</i>
-        </a>-->
+<!-- Muestra el contenido de esta pagina a la plantilla principal -->
+@section('content')
 <div class="main main-raised">
     <div class="container">
     	<div class="contenedormidle">

@@ -1,11 +1,12 @@
+<!-- Establece que este archivo es una platilla de extención -->
 @extends('layouts.app')
-
+<!-- Genera el tipo de pagina que se va a cargar segun las plantillas -->
 @section('body_class', 'signup-page')
-
+<!-- Nombre de la ubicacion de la pagina -->
 @section('page', 'Viajes')
-
+<!-- Pasa el titulo de la pagina a la plantilla principal -->
 @section('title_head', ' - Formulario de datos de viaje')
-
+<!-- Muestra el contenido de esta pagina a la plantilla principal -->
 @section('content')
 <div class="header header-filter" style="background-image: url('{{ asset('img/city.jpg') }}'); background-size: cover; background-position: top center;">
     <div class="container">
@@ -28,6 +29,14 @@
                                 <i class="material-icons">navigate_before</i>
                             </a>
                         <div class="content">
+                            @if(session('noty'))
+                                <div class="alert alert-warning">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                                    </button>
+                                    {{ session('noty') }}
+                                </div>
+                            @endif
                             <!--  Inicio del formulario
                                 ********************************** 
                                             Factores

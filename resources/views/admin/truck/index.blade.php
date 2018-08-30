@@ -50,16 +50,16 @@
 						                <table class="table table-bordered table-dark">
 										    <thead class="bg-info">
 										        <tr>
-										            <th class="info-title">#</th>
-										            <th class="info-title">Numero de camión</th>
-										            <th class="info-title">Opciones</th>
+										            <th class="info-title text-center">#</th>
+										            <th class="info-title text-center">Numero de camión</th>
+										            <th class="info-title text-center">Opciones</th>
 										        </tr>
 										    </thead>
 										    <tbody>
 										    	@foreach ($trucks as $t)
 										        <tr>
 										            <td class="info-title">{{$t->id}}</td>
-										            <td class="info-title" data-currency="MXN">{{$t->truck_number}}</td>
+										            <td class="info-title">{{$t->truck_number}}</td>
 										            <td class="info-title" class="td-actions text-right">
 										                <form method="post" action="{{ url('/admin/truck/'.$t->id) }}">
 										                	@csrf
@@ -78,6 +78,21 @@
 										</table>
 									</div>
 									{{$trucks->links()}}
+									@if($nums == 0)
+										<div class="alert alert-warning">
+										    <div class="container-fluid">
+											  <div class="alert-icon">
+												<i class="material-icons">info_outline</i>
+											  </div>
+											  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+												<span aria-hidden="true"><i class="material-icons">clear</i></span>
+											  </button>
+											  <b>Notificación:</b> ¡¡¡wow sin datos para mostrar por el momento!!!   
+											  <a class="label label-info" data-toggle="modal" data-target="#myModal">Mas información
+											  </a>
+										    </div>
+										</div>
+									@endif
 								<!--</div>-->
 							</div>
 						<!--</div> -->

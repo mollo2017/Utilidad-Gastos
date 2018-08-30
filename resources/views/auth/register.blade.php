@@ -1,11 +1,12 @@
+<!-- Establece que este archivo es una platilla de extención -->
 @extends('layouts.app')
-
+<!-- Genera el tipo de pagina que se va a cargar segun las plantillas -->
 @section('body_class', 'signup-page')
-
+<!-- Nombre de la ubicacion de la pagina -->
 @section('page', 'Pagina de registro')
-
+<!-- Pasa el titulo de la pagina a la plantilla principal -->
 @section('title_head', ' - Registro')
-
+<!-- Muestra el contenido de esta pagina a la plantilla principal -->
 @section('content')
 <div class="header header-filter" style="background-image: url('{{ asset('img/city.jpg') }}'); background-size: cover; background-position: top center;">
     <div class="container">
@@ -17,15 +18,6 @@
                         <div class="header header-primary text-center">
                             <h4>Regsitro</h4>
                             <div class="social-line">
-                                <!--<a href="#pablo" class="btn btn-simple btn-just-icon">
-                                    <i class="fa fa-facebook-square"></i>
-                                </a>
-                                <a href="#pablo" class="btn btn-simple btn-just-icon">
-                                    <i class="fa fa-twitter"></i>
-                                </a>
-                                <a href="#pablo" class="btn btn-simple btn-just-icon">
-                                    <i class="fa fa-google-plus"></i>
-                                </a>-->
                                 <img src="{{ asset('img/logo-cospor.png') }}" class="img-rounded" height="50%" width="50%"/>
                             </div>
                         </div>
@@ -37,6 +29,16 @@
                                     <i class="material-icons">face</i>
                                 </span>
                                 <input type="text" class="form-control" placeholder="Nombre de usuario" name="name" value="{{ old('name') }}" required autofocus>
+                                @if ($errors->has('name'))
+                                    <span class="invalid-feedback">
+                                        <div class="alert alert-warning">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                                            </button>
+                                            <strong>{{ $errors->first('name') }}</strong>
+                                        </div>
+                                    </span>
+                                @endif
                             </div>
 
                             <div class="input-group">
@@ -44,6 +46,16 @@
                                     <i class="material-icons">email</i>
                                 </span>
                                 <input id="email" type="email" class="form-control" placeholder="Correo electrónico" name="email" value="{{ old('email') }}" required autofocus>
+                                @if ($errors->has('email'))
+                                    <span class="invalid-feedback">
+                                        <div class="alert alert-warning">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                                            </button>
+                                            <strong>{{ $errors->first('email') }}</strong>
+                                        </div>
+                                    </span>
+                                @endif
                             </div>
 
                             <div class="input-group">
@@ -51,6 +63,16 @@
                                     <i class="material-icons">lock_outline</i>
                                 </span>
                                 <input id="password" type="password" placeholder="contraseña" class="form-control" name="password" required data-toggle="tooltip" data-placement="right" title="La contraseña debe de contener al menos 8 caracteres entre los cuales incluir alfanumericos y especiales">
+                                @if ($errors->has('password'))
+                                    <span class="invalid-feedback">
+                                        <div class="alert alert-warning">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                                            </button>
+                                            <strong>{{ $errors->first('password') }}</strong>
+                                        </div>
+                                    </span>
+                                @endif
                             </div>
 
                             <div class="input-group">

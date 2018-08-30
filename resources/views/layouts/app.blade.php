@@ -37,7 +37,7 @@
                 </button>
                 <p class="navbar-brand"><a href="/"><font color="white">COSPOR DISTRIBUCIONES S.A DE C.V.</a> / @yield('page')</p>
             </div>
-
+            <!-- Verife if guest or not for the session -->
             <div class="collapse navbar-collapse" id="navigation-example">
                 <ul class="nav navbar-nav navbar-right">
                     @guest
@@ -62,36 +62,41 @@
                             </div>
                         </li>
                     @endguest
-                    <!--<li>
-                        <a href="https://twitter.com/CreativeTim" target="_blank" class="btn btn-simple btn-white btn-just-icon">
-                            <i class="fa fa-twitter"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.facebook.com/CreativeTim" target="_blank" class="btn btn-simple btn-white btn-just-icon">
-                            <i class="fa fa-facebook-square"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.instagram.com/CreativeTimOfficial" target="_blank" class="btn btn-simple btn-white btn-just-icon">
-                            <i class="fa fa-instagram"></i>
-                        </a>    class="wrapper" class="container-fluid"
-                    </li>-->
                 </ul>
             </div>
         </div>
     </nav>
         <div class="wrapper">
-            
+            <!-- Here goes the body of the page with the next sentence -->
                 @yield('content')
             
         </div>
-
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel" color="000000" >Mas información</h4>
+              </div>
+              <div class="modal-body" type="text">
+                La base de datos por el momento no contiene informacion para esta lista de datos. Los datos 
+                empezaran a aparecer una vez que ingrese datos en el sistema, se recomienda regresar al menu 
+                <a href="{{ url('/home') }}" style="font-weight: bold">home</a> e iniciar a generar entradas al sistema.
+              </div>
+              <div class="modal-footer">
+                <!--button type="button" class="btn btn-default btn-simple" data-dismiss="modal">cerrar</button-->
+                <button type="button" class="btn btn-info btn-simple" data-dismiss="modal">entendido</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
 </body>
     <!--   Core JS Files   -->
     <script src="{{ asset('js/jquery.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/material.min.js') }}"></script>
+    <!-- include of the js file  to do the clock picker -->
     <script type = "text/javascript" src = "{{ asset('js/bootstrap-clockpicker.min.js') }}" > </script>
     <script type="text/javascript">
         $('.clockpicker').clockpicker()
@@ -99,7 +104,6 @@
                 console.log(this.value);
             });
     </script>
-
     <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
     <script src="{{ asset('js/nouislider.min.js') }}" type="text/javascript"></script>
 

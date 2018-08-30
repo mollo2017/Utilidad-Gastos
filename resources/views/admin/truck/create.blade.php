@@ -24,6 +24,14 @@
                             <h4>Ingresa los datos</h4>
                         </div>
                         <div class="content">
+                             @if(session('noty'))
+                                <div class="alert alert-warning">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                                    </button>
+                                    {{ session('noty') }}
+                                </div>
+                            @endif
                             <!-- truck_number -->
                             <div class="input-group">
                                 <span class="input-group-addon">

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+// inclucion de archivos para la ejecucion de las clases o modelos para consultas de ELOQUENT
 use Illuminate\Http\Request;
 use App\Trip_Result;
 use App\Trip_Fact;
@@ -13,9 +13,13 @@ use App\Truck;
 use App\Person;
 class TripResultController extends Controller
 {
-    //
+    /*
+    *index - Metodo que carga la vista de los datos de resultados para su vizualización en las tablas
+    *print - metodo que carga la vista de impresion de los gastos con los datos correspondientes
+    */
     public function index(){
     	$resulttrips = Trip_Result::paginate(10);
+        $nums = Trip_Result::all()->count();
         //****************************************************************
         //********fecha*********
         $texto="";
@@ -40,7 +44,7 @@ class TripResultController extends Controller
         $texto="";
         $pp = "";
         $rrts = "";
-        $Arrayrr;//arreglo de id_route
+        $Arrayrr = array();//arreglo de id_route
         foreach ($resulttrips as $resulttrip) {
             $pp = $resulttrip->id_trip_fact;
             $rrts = Trip_Fact::where('id',$pp)->select('id_route')->get();
@@ -94,17 +98,24 @@ class TripResultController extends Controller
             }
             //return $ArrayPn;
         //****************************************************************
-    	return view('admin.trip_result.index')->with(compact('resulttrips','Arrayfac','ArrayRtNbr','ArrayPn'));//listado
+    	return view('admin.trip_result.index')->with(compact('resulttrips','Arrayfac','ArrayRtNbr','ArrayPn','nums'));//listado
     }
     public function print($id)
     {
+
         $tripRR = Trip_Result::find($id);// extraccion de datos finales
         $ids = $tripRR->id_trip_fact;
         $ftfct = Trip_Fact::where("id",$ids)->first();//datos de factores de viajes
         //***************************************************************
         $tfid = $ftfct->id;
-        $Gf = Billed_expense::where("id_trip",$tfid)->first();
-        $GnF = Not_Billed_expense::where("id_trip",$tfid)->first();
+        $Gf = Billed_expense::where("id_trip",$tfid)->first(); //Extraccion de gastos facturados
+        $GnF = Not_Billed_expense::where("id_trip",$tfid)->first(); //Extraccion de gastos facturados
+
+        //validación de impresion
+        if($Gf== null){
+            $noty = "¡¡wow!!, por el momento este elemento no puede ser impreso, ya que necesita ser completado";
+            return back()->with(compact('noty'));
+        }
 
         //***************************************************************
         //id_route
@@ -140,10 +151,7 @@ class TripResultController extends Controller
             $texto=str_replace(':','',$texto);
             $ppr=$texto; 
             $ArrayPbls [] = $ppr;
-            //$pbls1= $pbls1 . " / " . $ppr;
         }
-        //$ArrayPbls [] =$pbls1;
-        //$pbls5 = $pbls5 . $pbls1;
         $ppr = "";
         $texto = "";
         //***************************************************************************************
@@ -159,11 +167,7 @@ class TripResultController extends Controller
             $texto=str_replace(':','',$texto);
             $ppr=$texto; 
             $ArrayPbls [] = $ppr;
-            //$pbls2= $pbls2 . " / " . $ppr;
         }
-        //$ArrayPbls [] =$pbls2;
-        //$pbls2= "";
-        //$pbls5 = $pbls5 . $pbls2;
         $ppr = "";
         $texto = "";
         //***************************************************************************************
@@ -178,16 +182,12 @@ class TripResultController extends Controller
             $texto=str_replace('poblation_name','',$texto);
             $texto=str_replace(':','',$texto);
             $ppr=$texto;
-            $ArrayPbls [] = $ppr; 
-            //$pbls3= $pbls3 . " / " . $ppr;
+            $ArrayPbls [] = $ppr;
         }
-        //$pbls5 = $pbls5 . $pbls3;
-        //$ArrayPbls [] =$pbls3;
-        //$pbls3= "";
         $ppr = "";
         $texto = "";
         //***************************************************************************************
-        $poblts4 = Poblation::where('id_route3',$ss1)->select('poblation_name')->get();
+        $poblts4 = Poblation::where('id_route4',$ss1)->select('poblation_name')->get();
         foreach ($poblts4 as $poblt4) {
             $ppr = $poblt4;
             $texto=str_replace('"','',$ppr);
@@ -198,11 +198,8 @@ class TripResultController extends Controller
             $texto=str_replace('poblation_name','',$texto);
             $texto=str_replace(':','',$texto);
             $ppr=$texto; 
-            $ArrayPbls [] = $ppr;
-            //$pbls4= $pbls4 . " / " . $ppr;
+            $ArrayPbls [] = $ppr;// poblaciones de la ruta
         }
-        //$pbls5 = $pbls5 . $pbls4;
-        //$ArrayPbls [] =$pbls5;
         $pbls1= "";
         $pbls2= "";
         $pbls3= "";

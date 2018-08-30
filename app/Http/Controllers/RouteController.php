@@ -1,16 +1,28 @@
 <?php
 
 namespace App\Http\Controllers;
-
+// inclucion de archivos para la ejecucion de las clases o modelos para consultas de ELOQUENT
 use Illuminate\Http\Request;
 use App\Route;
 use App\Poblation;
-
+/*
+    Esta clase contiene los siguientes metodos 
+    *index - Metodo que carga la vista de los datos de las rutas para su vizualización en las tablas
+    *create - Metodo que devuelve la vista para ingreasar los datos para una nueva ruta
+    *store - Metodo que recibe los datos de la vista create y procesa los datos para su posterior 
+        almacenamiiento dentro de la base de datos
+    *edit - Metodo que devuelve una vista con un formulario para la edicion de los datos de las rutas
+    *update - Metodo que recive los datos de la vista edit y los procesa para su posterior almacenamiento
+        dentro de la base de datos
+    *destroy - Metodo para la eliminacion del registro de datos de una ruta, la eliminacion es fisica 
+        de la base de datos
+*/
 class RouteController extends Controller
 {
     //
     public function index(){
         $routs = Route::paginate(10);
+        $nums = Route::all()->count();
         $pbls1 ="";
         $pbls2 ="";
         $pbls3 ="";
@@ -97,14 +109,27 @@ class RouteController extends Controller
             $ppr = "";
             $texto = "";
         }
-       	return view('admin.route.index')->with(compact('routs','ArrayPbls'));//listado
+       	return view('admin.route.index')->with(compact('routs','ArrayPbls','nums'));//listado
     }
     public function create(){
+
     	return view('admin.route.create');//formulario de registro
     }
     public function store(Request $request){
     	//registrar el nuevo producto
         $enrt = new Route();
+        if($request->input('route_number')==null){
+            $noty = "¡¡wow!!, por favor rellena todos los campos antes de continuar";
+            return back()->with(compact('noty'));        
+        }
+        $comp = Route::all();
+        foreach ($comp as $key) {
+            if($request->input('route_number')==$key->route_number){
+                $noty = "Lo sentimos el dato ya existe en los registros, por favor intente con otro";
+                return back()->with(compact('noty'));
+                break;
+            }
+        }
         $enrt->route_number = $request->input('route_number');
         $enrt->save();
         return redirect('/admin/route');

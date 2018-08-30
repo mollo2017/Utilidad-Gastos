@@ -16,10 +16,10 @@ class DatabaseSeeder extends Seeder
         $this->call(PoblationsTableSeeder::class);
         $this->call(PeopleTableSeeder::class);
         $this->call(TrucksTableSeeder::class);
-        $this->call(TripFactsTableSeeder::class);
-        $this->call(BilledEpensesTableSeeder::class);
-        $this->call(NotBilledExpensesTableSeeder::class);
-        $this->call(TripResultsTableSeeder::class);
+        //$this->call(TripFactsTableSeeder::class);
+        //$this->call(BilledEpensesTableSeeder::class);
+        //$this->call(NotBilledExpensesTableSeeder::class);
+        //$this->call(TripResultsTableSeeder::class);
         		  //PoblationsTableSeeder
         		//  PoblationsTableSeeder
     }

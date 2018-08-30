@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+// inclucion de archivos para la ejecucion de las clases o modelos para consultas de ELOQUENT
 use Illuminate\Http\Request;
 use App\Trip_Fact;
 use App\Route;
@@ -9,12 +9,19 @@ use App\Truck;
 use App\Person;
 use App\Not_Billed_expense;
 use App\Billed_expense;
-
+/*
+    Esta clase contiene los siguientes metodos 
+    *index - Metodo que carga la vista de los datos de los factores de viaje para su vizualización en las 
+        tablas
+    *create - sin uso
+    *store - sin uso
+*/
 class TripFactController extends Controller
 {
     //
     public function index(){
         $factstrips = Trip_Fact::where('ban','<>','1')->paginate(10);
+        $nums = Trip_Fact::where('ban','<>','1')->count();
         //****************************************************************
         foreach ($factstrips as $factstrip) {
             $Gfacturadoos = Billed_expense::where('id_trip',$factstrip->id)->first();
@@ -142,12 +149,12 @@ class TripFactController extends Controller
             $ArrayB[] = $nameses;
         }
         //***************************************************************
-    	return view('admin.trip_facts.index')->with(compact('factstrips','ArrayRoutes','ArrayTruks','Arraychof','Arrayc1','Arrayc2','ArrayB','ArraGfacturadoos','ArraGnFacturados'));//listado
+    	return view('admin.trip_facts.index')->with(compact('factstrips','ArrayRoutes','ArrayTruks','Arraychof','Arrayc1','Arrayc2','ArrayB','ArraGfacturadoos','ArraGnFacturados','nums'));//listado
     }
     public function create(){
-    	return view('admin.trip_facts.create');//formulario de registro
+    	return view('admin.trip_facts.create');//formulario de registro (sin uso)
     }
     public function store(){
-    	//registrar el nuevo producto
+    	//registrar el nuevo producto(sin uso)
     }
 }

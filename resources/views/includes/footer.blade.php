@@ -1,14 +1,15 @@
+    <!-- Sección de footer que se anexa a las paginas cuando lo necesitan deacuerdo al diseño-->
     <footer class="footer">
         <div class="container">
             <nav class="pull-left">
                 <ul>
                     <li>
-                        <a href="http://www.creative-tim.com">
+                        <a href="#">
                             Acerca del software
                         </a>
                     </li>
                     <li>
-                        <a href="http://www.creative-tim.com/license">
+                        <a href="#">
                             Licenses
                         </a>
                     </li>
