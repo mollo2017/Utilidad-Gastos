@@ -127,3 +127,19 @@ function debounce(func, wait, immediate) {
 		if (immediate && !timeout) func.apply(context, args);
 	};
 };
+
+function showNotification(from, align,msn){
+
+  $.notify({
+      icon: "add_alert",
+      message: msn
+
+  },{
+      type: 'success',
+      timer: 4000,
+      placement: {
+          from: from,
+          align: align
+      }
+  });
+}

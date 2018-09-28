@@ -223,10 +223,8 @@ class BilledExpenceController extends Controller
         $idTf = $TripFFact->id;
         $ResPrincipales = Trip_Result::where('id_trip_fact',$idTf)->get();//datos de los resultados
         //***************************************************************
-        //total de cajas
-        //gross_profit
+        //utilidad
         $st2 = $ResPrincipales[0]->gross_profit;
-        //$Rt = Route::Where('id',$st2)->select('route_number')->get();
         $texto=str_replace('"','',$st2);
         $texto=str_replace('{','',$texto);
         $texto=str_replace('}','',$texto);
@@ -237,9 +235,8 @@ class BilledExpenceController extends Controller
         $st2=$texto;//numero de ruta guardado
         $texto = "";
         //***************************************************************
-        //utilidad
+        //total de cajas
         $st1 = $ResPrincipales[0]->total_boxes;
-        //$Rt = Route::Where('id',$st1)->select('route_number')->get();
         $texto=str_replace('"','',$st1);
         $texto=str_replace('{','',$texto);
         $texto=str_replace('}','',$texto);
@@ -247,7 +244,7 @@ class BilledExpenceController extends Controller
         $texto=str_replace(']','',$texto);
         $texto=str_replace('total_boxes','',$texto);
         $texto=str_replace(':','',$texto);
-        $st1=$texto;//numero de ruta guardado
+        $st1=$texto;//total de cajas guardado
         $texto = "";
         //***************************************************************
         $ruta = Route::all();
@@ -347,7 +344,6 @@ class BilledExpenceController extends Controller
         $gcr=$texto;//nombre del bodeguero
         $texto = "";
         //***************************************************************
-        //return $ResPrincipales[0]->total_boxes;
         //----------------------------------------------------------------
         return view('admin.billed_expense.edit')->with(compact('TripFFact','st1','st2','Rt','Tck','dvr','cr1','cr2','gcr','fechaff','ruta','truck','ChoferPeopleses','Char1Peopleses','Char2Peopleses','GrocerPeopleses'));//formulario para editar viaje con gastos
     }  

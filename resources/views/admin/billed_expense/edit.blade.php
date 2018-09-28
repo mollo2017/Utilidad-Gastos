@@ -16,7 +16,7 @@
                     <form class="form" method="POST" action="{{ url('/admin/billed_expense/'.$TripFFact->id.'/edit') }}">
                         @csrf
                         <div class="header header-primary text-center">
-                            <h2>Nuevo viaje</h2>
+                            <h2>Viaje pendiente</h2>
                             <div class="social-line">
                                 <img src="{{ asset('img/logo-cospor.png') }}" class="img-rounded" height="20%" width="20%"/>
                             </div>

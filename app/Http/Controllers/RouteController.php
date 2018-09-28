@@ -149,7 +149,8 @@ class RouteController extends Controller
     public function destroy($id){
         $enrt = Route::find($id);
         $enrt->delete();
-        return back();
+        $noty = "Elemento eliminado satisfactoriamente";
+        return back()->with(compact('noty'));
     }
     
 }

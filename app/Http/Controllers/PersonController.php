@@ -63,7 +63,8 @@ class PersonController extends Controller
     public function destroy($id){
         $personal = Person::find($id);
         $personal->delete();
-        return back();
+        $noty = "Elemento eliminado satisfactoriamente";
+        return back()->with(compact('noty'));
     }
 
 }

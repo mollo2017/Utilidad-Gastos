@@ -315,6 +315,7 @@ class PoblationController extends Controller
     public function destroy($id){
         $Poblt = Poblation::find($id);
         $Poblt->delete();
-        return back();
+        $noty = "Elemento eliminado satisfactoriamente";
+        return back()->with(compact('noty'));
     }
 }

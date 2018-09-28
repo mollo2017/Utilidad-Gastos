@@ -30,6 +30,7 @@
                             </a>
                         <div class="content">
                             @if(session('noty'))
+                                <script type="text/javascript"> md.showNotification('top','right','noty')</script>
                                 <div class="alert alert-warning">
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true"><i class="material-icons">clear</i></span>

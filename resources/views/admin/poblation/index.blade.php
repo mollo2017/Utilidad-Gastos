@@ -42,13 +42,21 @@
 					    	</div>
 						</div>
 					</nav>
-					<a href="{{ url('/admin/poblation/create') }}" class="btn btn-success btn-round"><i class="material-icons">add_comment</i>   Agregar Poblacion</a>
+					@if(session('noty'))
+                        <div class="alert alert-warning">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                            </button>
+                            {{ session('noty') }}
+                        </div>
+                    @endif
+					<a href="{{ url('/admin/poblation/create') }}" class="btn btn-success btn-round"><i class="material-icons">add_comment</i>   Agregar Población</a>
 					<div class="table-responsive">
 		                <table class="table table-bordered table-dark">
 						    <thead class="bg-danger">
 						        <tr>
 						            <th class="info-title text-center">#</th>
-						            <th class="info-title text-center">Poblacion</th>
+						            <th class="info-title text-center">Población</th>
 						            <th class="info-title text-center">Ruta 1</th>
 						            <th class="info-title text-center">Ruta 2</th>
 						            <th class="info-title text-center">Ruta 3</th>

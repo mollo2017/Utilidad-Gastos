@@ -60,6 +60,7 @@ class TruckController extends Controller
     public function destroy($id){
         $Trck = Truck::find($id);
         $Trck->delete();
-        return back();
+        $noty = "Elemento eliminado satisfactoriamente";
+        return back()->with(compact('noty'));
     }
 }

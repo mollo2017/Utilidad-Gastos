@@ -45,7 +45,15 @@
 									    	</div>
 										</div>
 									</nav>
-									<a href="{{ url('/admin/truck/create') }}" class="btn btn-success btn-round"><i class="material-icons">add_comment</i>   Agregar Camion</a>
+									@if(session('noty'))
+				                        <div class="alert alert-warning">
+				                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				                                <span aria-hidden="true"><i class="material-icons">clear</i></span>
+				                            </button>
+				                            {{ session('noty') }}
+				                        </div>
+				                    @endif
+									<a href="{{ url('/admin/truck/create') }}" class="btn btn-success btn-round"><i class="material-icons">add_comment</i>   Agregar Camión</a>
 									<div class="table-responsive">
 						                <table class="table table-bordered table-dark">
 										    <thead class="bg-info">
